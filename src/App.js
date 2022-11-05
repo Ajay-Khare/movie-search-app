@@ -1,19 +1,23 @@
 import './App.css';
-import {useState} from "react"
+import { useEffect, useState } from "react"
 function App() {
   const [data, setData] = useState([])
-  
+
   const options = {
     method: 'GET'
   };
 
-  fetch('https://www.omdbapi.com/?i=tt3896198&apikey=4968cf38&&s=harry', options)
-    .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(err => console.error(err));
+  useEffect(() => {
+    fetch('https://www.omdbapi.com/?i=tt3896198&apikey=4968cf38&s=batman', options)
+      .then(response => response.json())
+      .then(response => {setData(response);console.log(response)})
+      .catch(err => console.error(err));
+
+  },[])
+
   return (
-    <div className="App">
-      <h1>hiii</h1>
+    <div className="mainContainer">
+      
     </div>
   );
 }
